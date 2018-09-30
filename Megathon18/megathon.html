@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="megathon.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<script>
+    
+    function display(){
+        document.getElementById('pulse').style.visibility="visible";
+        document.getElementById('msg').innerHTML="Cilck icon to Record";
+    }
+    function record(){
+        document.getElementById('pulse').style.animation="pulse 0.5s infinite";
+        document.getElementById('msg').innerHTML = "Recording....";
+        document.querySelector('.view-result').disabled=false;
+
+    }
+    function transform(x){
+        var input=x.split(" ");
+        console.log(input);
+        var confidence=0.7;
+        for(var i=0;i<input.length;i++){
+            var para = document.createElement('span');
+            var text=document.createTextNode(input[i]+" ");
+            para.appendChild(text);
+            if(confidence>0.8)
+                para.className="correct";
+            else if(confidence>0.6)
+                para.className="incorrect";
+            document.querySelector('.result').appendChild(para); 
+        }
+    }
+</script>
+<body>
+    <div class="navbar">
+        <img class="items logo" src="logo.png" alt="">
+        <a class="items" href="#">Login</a>
+        <a class="items" href="#">Sign Up</a>
+    </div>
+    <br> <br>
+    <div class="container">
+     <div class="title">
+         Sadhana
+         <p class="caption">...Technology replacing Employer...</p> 
+         <button class="button" onclick="display()">Start Test  <i class="fas fa-cog"></i></button>
+        <button class="button view-result" disabled>View Results <i class="fas fa-chart-bar"></i></button>
+        <span id="pulse" onclick="record()" class="pulse"><img class="mic" src="mic.png" alt=""></span>   
+        <p id="msg"></p>     
+    </div>
+    <div class="result">
+        <!-- <p><span class="word correct">Check</span> <br>
+        <span class="word incorrect">Out</span> <br>
+        <span class="word can-improve">Your</span> <br>
+        <span class="word ">Results</span></p>-->
+        <p>Text to read <br>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio, pariatur architecto. Quisquam ut nulla nam? Laborum alias, error assumenda saepe nam, similique quis commodi labore fugit cum necessitatibus, adipisci reiciendis?</p>
+        <p>Text you read</p>    
+
+    </div>
+    </div>
+    <div class="copyrites">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis consectetur facilis culpa qui fuga dignissimos vero commodi officia cum nostrum earum, odit voluptatem sapiente vitae quisquam. Ducimus quis eligendi omnis?
+    </div>
+</body>
+</html>
